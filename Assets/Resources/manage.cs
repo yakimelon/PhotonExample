@@ -10,18 +10,18 @@ public class manage : MonoBehaviour {
 		_keyLock = false;
 		Debug.Log("サーバへ接続");
 
-		// サーバへ接続
+		// サーバへ接続して、ロビーへ入室する
 		PhotonNetwork.ConnectUsingSettings(null);
 	}
 	
-	// ロビーへ入室した
+	// ロビーへ入室すると呼び出される
 	void OnJoinedLobby() {
 		Debug.Log("ロビーへ入室しました");
 		// どこかのルームへ接続
 		PhotonNetwork.JoinRandomRoom();
 	}
 	
-	// ルームへ入室した
+	// ルームへ入室すると呼び出される
 	void OnJoinedRoom() {
 		Debug.Log("ルームへ入室しました");
 
@@ -29,7 +29,7 @@ public class manage : MonoBehaviour {
 		_keyLock = true;
 	}
 	
-	// ルームの入室へ失敗
+	// ルームの入室へ失敗すると呼び出される
 	void OnPhotonRandomJoinFailed() {
 		Debug.Log("ルーム入室が失敗");
 		// 自分でルームを作成して入室
